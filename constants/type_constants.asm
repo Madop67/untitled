@@ -26,4 +26,3 @@ SPECIAL EQU const_value
 	const STEEL		   ; $1C
 	const FAIRY		   ; $1D
 
-	NUM_TYPES EQU const_value
