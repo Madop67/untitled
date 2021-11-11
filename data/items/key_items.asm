@@ -22,7 +22,7 @@ KeyItemFlags:
 	dbit FALSE ; POTION
 	dbit TRUE  ; BOULDERBADGE
 	dbit TRUE  ; CASCADEBADGE
-	dbit TRUE  ; THUNDERBADGE
+	dbit TRUE  ; DVFM
 	dbit TRUE  ; RAINBOWBADGE
 	dbit TRUE  ; SOULBADGE
 	dbit TRUE  ; MARSHBADGE
@@ -43,13 +43,13 @@ KeyItemFlags:
 	dbit TRUE  ; DOME_FOSSIL
 	dbit TRUE  ; HELIX_FOSSIL
 	dbit TRUE  ; SECRET_KEY
-	dbit TRUE  ; UNUSED_ITEM
+	dbit TRUE  ; BIG_SCISSORS
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
 	dbit FALSE ; LEAF_STONE
 	dbit TRUE  ; CARD_KEY
 	dbit FALSE ; NUGGET
-	dbit FALSE ; PP_UP_2
+	dbit TRUE ; GRAVITY_GUN
 	dbit FALSE ; POKE_DOLL
 	dbit FALSE ; FULL_HEAL
 	dbit FALSE ; REVIVE

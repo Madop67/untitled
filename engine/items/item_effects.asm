@@ -39,7 +39,7 @@ ItemUsePtrTable:
 	dw ItemUseMedicine   ; POTION
 	dw ItemUseBait       ; BOULDERBADGE
 	dw ItemUseRock       ; CASCADEBADGE
-	dw UnusableItem      ; THUNDERBADGE
+	dw ItemUseFly        ; DA VINCI FLYING MACHINE
 	dw UnusableItem      ; RAINBOWBADGE
 	dw UnusableItem      ; SOULBADGE
 	dw UnusableItem      ; MARSHBADGE
@@ -60,13 +60,13 @@ ItemUsePtrTable:
 	dw UnusableItem      ; DOME_FOSSIL
 	dw UnusableItem      ; HELIX_FOSSIL
 	dw UnusableItem      ; SECRET_KEY
-	dw UnusableItem
+	dw ItemUseScissors	 ; BIG_SCISSORS
 	dw UnusableItem      ; BIKE_VOUCHER
 	dw ItemUseXAccuracy  ; X_ACCURACY
 	dw ItemUseEvoStone   ; LEAF_STONE
 	dw ItemUseCardKey    ; CARD_KEY
 	dw UnusableItem      ; NUGGET
-	dw UnusableItem      ; ??? PP_UP
+	dw ItemUseGravity    ; GRAVITY_GUN
 	dw ItemUsePokedoll   ; POKE_DOLL
 	dw ItemUseMedicine   ; FULL_HEAL
 	dw ItemUseMedicine   ; REVIVE
@@ -783,6 +783,18 @@ SurfingGotOnText:
 SurfingNoPlaceToGetOffText:
 	text_far _SurfingNoPlaceToGetOffText
 	text_end
+
+ItemUseScissors:
+	farcall UsedCut
+	ret
+
+ItemUseGravity:
+	farcall PrintStrengthTxt
+	ret
+
+ItemUseFly:
+	farcall ChooseFlyDestination
+	ret
 
 ItemUsePokedex:
 	predef_jump ShowPokedexMenu
