@@ -5612,6 +5612,9 @@ MoveHitTest:
 	cp b
 	jr nc, .moveMissed
 	ret
+.moveDidNotMiss
+	call ApplyAttackToEnemyPokemon
+	ret
 .moveMissed
 	xor a
 	ld hl, wDamage ; zero the damage
