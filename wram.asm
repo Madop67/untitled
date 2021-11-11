@@ -1716,7 +1716,7 @@ wMonHFrontSprite:: dw
 wMonHBackSprite:: dw
 wMonHMoves:: ds NUM_MOVES
 wMonHGrowthRate:: db
-wMonHLearnset:: flag_array NUM_TMS + NUM_HMS
+wMonHLearnset:: flag_array NUM_TMS
 	ds 1
 wMonHeaderEnd::
 

@@ -15,7 +15,7 @@ GetItemPrice::
 	ld h, [hl]
 	ld l, a
 	ld a, [wcf91] ; a contains item id
-	cp HM01
+	cp TM01
 	jr nc, .getTMPrice
 	ld bc, $3
 .loop

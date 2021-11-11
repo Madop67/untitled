@@ -116,7 +116,7 @@ NUM_FLOORS EQU const_value - 1 - NUM_ITEMS
 ; HMs are defined before TMs, so the actual number of TM definitions
 ; is not yet available. The TM quantity is hard-coded here and must
 ; match the actual number below.
-NUM_TMS EQU 50
+NUM_TMS EQU 55
 
 __tmhm_value__ = NUM_TMS + 1
 
@@ -125,30 +125,11 @@ add_tmnum: MACRO
 __tmhm_value__ = __tmhm_value__ + 1
 ENDM
 
-add_hm: MACRO
-; Defines three constants:
-; - HM_\1: the item id, starting at $C4
-; - \1_TMNUM: the learnable TM/HM flag, starting at 51
-; - HM##_MOVE: alias for the move id, equal to the value of \1
-	const HM_\1
-HM_VALUE = __tmhm_value__ - NUM_TMS
-HM{02d:HM_VALUE}_MOVE EQU \1
-	add_tmnum \1
-ENDM
-
-HM01 EQU const_value
-	add_hm CUT          ; $C4
-	add_hm FLY          ; $C5
-	add_hm SURF         ; $C6
-	add_hm STRENGTH     ; $C7
-	add_hm FLASH        ; $C8
-NUM_HMS EQU const_value - HM01
-
 __tmhm_value__ = 1
 
 add_tm: MACRO
 ; Defines three constants:
-; - TM_\1: the item id, starting at $C9
+; - TM_\1: the item id, starting at $C4
 ; - \1_TMNUM: the learnable TM/HM flag, starting at 1
 ; - TM##_MOVE: alias for the move id, equal to the value of \1
 	const TM_\1
@@ -157,6 +138,11 @@ TM{02d:__tmhm_value__}_MOVE EQU \1
 ENDM
 
 TM01 EQU const_value
+    add_tm CUT          ; $C4
+	add_tm FLY          ; $C5
+	add_tm SURF         ; $C6
+	add_tm STRENGTH     ; $C7
+	add_tm FLASH        ; $C8
 	add_tm MEGA_PUNCH   ; $C9
 	add_tm RAZOR_WIND   ; $CA
 	add_tm SWORDS_DANCE ; $CB
@@ -209,7 +195,7 @@ TM01 EQU const_value
 	add_tm SUBSTITUTE   ; $FA
 ASSERT NUM_TMS == const_value - TM01, "NUM_TMS ({d:NUM_TMS}) does not match the number of add_tm definitions"
 
-NUM_TM_HM EQU NUM_TMS + NUM_HMS
+NUM_TM_HM EQU NUM_TMS
 
 ; 50 TMs + 5 HMs = 55 learnable TM/HM flags per Pokémon.
 ; These fit in 7 bytes, with one unused bit left over.

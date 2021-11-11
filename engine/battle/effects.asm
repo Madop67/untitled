@@ -327,13 +327,16 @@ FreezeBurnParalyzeEffect:
 	ld hl, BurnedText
 	jp PrintText
 .freeze2
-; hyper beam bits aren't reseted for opponent's side
+; hyper beam bits aren't reset for opponent's side
 	ld a, 1 << FRZ
 	ld [wBattleMonStatus], a
 	ld a, ANIM_C7
 	call PlayBattleAnimation2
 	ld hl, FrozenText
 	jp PrintText
+
+TriAttackEffect:
+	text_end
 
 BurnedText:
 	text_far _BurnedText

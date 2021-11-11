@@ -2,7 +2,7 @@ UseItem_::
 	ld a, 1
 	ld [wActionResultOrTookBattleTurn], a ; initialise to success value
 	ld a, [wcf91] ;contains item_ID
-	cp HM01
+	cp TM01
 	jp nc, ItemUseTMHM
 	ld hl, ItemUsePtrTable
 	dec a
@@ -2398,7 +2398,7 @@ ItemUseTMHM:
 	sub TM01 ; underflows below 0 for HM items (before TM items)
 	push af
 	jr nc, .skipAdding
-	add NUM_TMS + NUM_HMS ; adjust HM IDs to come after TM IDs
+	add NUM_TMS + NUM_TMS ; adjust HM IDs to come after TM IDs
 .skipAdding
 	inc a
 	ld [wd11e], a
@@ -2893,7 +2893,7 @@ IsKeyItem_::
 	ld a, $01
 	ld [wIsKeyItem], a
 	ld a, [wcf91]
-	cp HM01 ; is the item an HM or TM?
+	cp TM01 ; is the item an HM or TM?
 	jr nc, .checkIfItemIsHM
 ; if the item is not an HM or TM
 	push af

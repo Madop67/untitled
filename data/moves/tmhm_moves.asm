@@ -9,9 +9,3 @@ FOR n, 1, NUM_TMS + 1
 ENDR
 	assert_table_length NUM_TMS
 
-FOR n, 1, NUM_HMS + 1
-	db HM{02d:n}_MOVE
-ENDR
-	assert_table_length NUM_TM_HM
-
-	db -1 ; end
